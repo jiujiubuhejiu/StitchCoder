@@ -1,0 +1,126 @@
+{
+  "protocol": "StitchCoder BS-F/BS-R multi-model comparison",
+  "protocol_version": 1,
+  "defaults": {
+    "alignment_dataset": {
+      "name": "monology/pile-uncopyrighted",
+      "revision": "3be90335b66f24456a5d6659d9c8d208c0357119",
+      "split": "train",
+      "text_field": "text",
+      "sampling": "random",
+      "seed": 42,
+      "pool_size": 40000,
+      "num_samples": 6000,
+      "min_chars": 1
+    },
+    "scoring_dataset": {
+      "name": "allenai/c4",
+      "subset": "en",
+      "revision": "1588ec454efa1a09f29cd18ddd04fe05fc8653a2",
+      "split": "validation",
+      "text_field": "text",
+      "sampling": "first",
+      "seed": 0,
+      "pool_size": 10000,
+      "num_samples": 4000,
+      "char_limit": 512,
+      "min_chars": 11
+    },
+    "alignment": {
+      "batch_size": 4,
+      "max_length": 64,
+      "pooling": "valid_token_mean",
+      "preprocessing": "l2_row_normalize"
+    },
+    "scoring": {
+      "batch_size": 4,
+      "max_length": 64,
+      "token_pooling": "token"
+    },
+    "bs_f": {
+      "steer_threshold": 0.1,
+      "margin_threshold": 0.05,
+      "delta_clip": 4.0,
+      "sample_dead_threshold": 1e-6,
+      "native_dead_threshold": 1e-7
+    },
+    "bs_r": {
+      "ridge_lambda": 100.0,
+      "train_fraction": 0.8,
+      "seed": 0,
+      "sample_dead_threshold": 1e-6,
+      "native_dead_threshold": 1e-7
+    }
+  },
+  "cells": {
+    "gemma2b_self_alignment_v2": {
+      "scenario": "Self-alignment",
+      "model_a": {"name": "google/gemma-2-2b", "revision": "c5ebcd40d208330abc697524c919956e692655cf", "layer": 12, "dtype": "float16"},
+      "model_b": {"name": "google/gemma-2-2b", "revision": "c5ebcd40d208330abc697524c919956e692655cf", "layer": 12, "dtype": "float16"},
+      "sae_a": {"loader": "sae_lens", "release": "gemma-scope-2b-pt-res-canonical", "repo_id": "google/gemma-scope-2b-pt-res", "revision": "fd571b47c1c64851e9b1989792367b9babb4af63", "sae_id": "layer_12/width_32k/canonical", "features": 32768},
+      "sae_b": {"loader": "sae_lens", "release": "gemma-scope-2b-pt-res-canonical", "repo_id": "google/gemma-scope-2b-pt-res", "revision": "fd571b47c1c64851e9b1989792367b9babb4af63", "sae_id": "layer_12/width_32k/canonical", "features": 32768}
+    },
+    "canonical_to_matryoshka_v2": {
+      "scenario": "Same model, different SAE",
+      "model_a": {"name": "google/gemma-2-2b", "revision": "c5ebcd40d208330abc697524c919956e692655cf", "layer": 12, "dtype": "float16"},
+      "model_b": {"name": "google/gemma-2-2b", "revision": "c5ebcd40d208330abc697524c919956e692655cf", "layer": 12, "dtype": "float16"},
+      "sae_a": {"loader": "sae_lens", "release": "gemma-scope-2b-pt-res-canonical", "repo_id": "google/gemma-scope-2b-pt-res", "revision": "fd571b47c1c64851e9b1989792367b9babb4af63", "sae_id": "layer_12/width_32k/canonical", "features": 32768},
+      "sae_b": {"loader": "sae_lens", "release": "gemma-2-2b-res-matryoshka-dc", "repo_id": "chanind/gemma-2-2b-batch-topk-matryoshka-saes-w-32k-l0-40", "revision": "4c28e790b0213430d52dd8e5a09f681a53f5b79d", "sae_id": "blocks.12.hook_resid_post", "features": 32768}
+    },
+    "matryoshka_to_canonical_v2": {
+      "scenario": "Same model, different SAE",
+      "model_a": {"name": "google/gemma-2-2b", "revision": "c5ebcd40d208330abc697524c919956e692655cf", "layer": 12, "dtype": "float16"},
+      "model_b": {"name": "google/gemma-2-2b", "revision": "c5ebcd40d208330abc697524c919956e692655cf", "layer": 12, "dtype": "float16"},
+      "sae_a": {"loader": "sae_lens", "release": "gemma-2-2b-res-matryoshka-dc", "repo_id": "chanind/gemma-2-2b-batch-topk-matryoshka-saes-w-32k-l0-40", "revision": "4c28e790b0213430d52dd8e5a09f681a53f5b79d", "sae_id": "blocks.12.hook_resid_post", "features": 32768},
+      "sae_b": {"loader": "sae_lens", "release": "gemma-scope-2b-pt-res-canonical", "repo_id": "google/gemma-scope-2b-pt-res", "revision": "fd571b47c1c64851e9b1989792367b9babb4af63", "sae_id": "layer_12/width_32k/canonical", "features": 32768}
+    },
+    "base_to_instruct_750m": {
+      "scenario": "Base vs. instruct",
+      "model_a": {"name": "google/gemma-2-2b", "revision": "c5ebcd40d208330abc697524c919956e692655cf", "layer": 13, "dtype": "float16"},
+      "model_b": {"name": "google/gemma-2-2b-it", "revision": "299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8", "layer": 13, "dtype": "float16"},
+      "sae_a": {"loader": "sae_lens", "release": "gemma-2-2b-res-matryoshka-dc", "repo_id": "chanind/gemma-2-2b-batch-topk-matryoshka-saes-w-32k-l0-40", "revision": "4c28e790b0213430d52dd8e5a09f681a53f5b79d", "sae_id": "blocks.13.hook_resid_post", "features": 32768},
+      "sae_b": {"loader": "sae_lens", "release": "${STITCHCODER_IT_SAE_PATH}", "sae_id": "instruct_sae", "features": 32768}
+    },
+    "instruct_to_base_750m": {
+      "scenario": "Base vs. instruct",
+      "model_a": {"name": "google/gemma-2-2b-it", "revision": "299a8560bedf22ed1c72a8a11e7dce4a7f9f51f8", "layer": 13, "dtype": "float16"},
+      "model_b": {"name": "google/gemma-2-2b", "revision": "c5ebcd40d208330abc697524c919956e692655cf", "layer": 13, "dtype": "float16"},
+      "sae_a": {"loader": "sae_lens", "release": "${STITCHCODER_IT_SAE_PATH}", "sae_id": "instruct_sae", "features": 32768},
+      "sae_b": {"loader": "sae_lens", "release": "gemma-2-2b-res-matryoshka-dc", "repo_id": "chanind/gemma-2-2b-batch-topk-matryoshka-saes-w-32k-l0-40", "revision": "4c28e790b0213430d52dd8e5a09f681a53f5b79d", "sae_id": "blocks.13.hook_resid_post", "features": 32768}
+    },
+    "gemma2b_to_gemma9b_d50": {
+      "scenario": "Cross-scale",
+      "model_a": {"name": "google/gemma-2-2b", "revision": "c5ebcd40d208330abc697524c919956e692655cf", "layer": 13, "dtype": "float16"},
+      "model_b": {"name": "google/gemma-2-9b", "revision": "33c193028431c2fde6c6e51f29e6f17b60cbfac6", "layer": 21, "dtype": "float16"},
+      "sae_a": {"loader": "sae_lens", "release": "gemma-scope-2b-pt-res-canonical", "repo_id": "google/gemma-scope-2b-pt-res", "revision": "fd571b47c1c64851e9b1989792367b9babb4af63", "sae_id": "layer_13/width_16k/canonical", "features": 16384},
+      "sae_b": {"loader": "sae_lens", "release": "gemma-scope-9b-pt-res-canonical", "repo_id": "google/gemma-scope-9b-pt-res", "revision": "f9b689815814972562d28082f9f7d65d7e01fdc8", "sae_id": "layer_21/width_16k/canonical", "features": 16384},
+      "alignment_dataset": {"sampling": "stratified", "pool_size": 100000, "num_samples": 20000}
+    },
+    "gemma9b_to_gemma2b_d50": {
+      "scenario": "Cross-scale",
+      "model_a": {"name": "google/gemma-2-9b", "revision": "33c193028431c2fde6c6e51f29e6f17b60cbfac6", "layer": 21, "dtype": "float16"},
+      "model_b": {"name": "google/gemma-2-2b", "revision": "c5ebcd40d208330abc697524c919956e692655cf", "layer": 13, "dtype": "float16"},
+      "sae_a": {"loader": "sae_lens", "release": "gemma-scope-9b-pt-res-canonical", "repo_id": "google/gemma-scope-9b-pt-res", "revision": "f9b689815814972562d28082f9f7d65d7e01fdc8", "sae_id": "layer_21/width_16k/canonical", "features": 16384},
+      "sae_b": {"loader": "sae_lens", "release": "gemma-scope-2b-pt-res-canonical", "repo_id": "google/gemma-scope-2b-pt-res", "revision": "fd571b47c1c64851e9b1989792367b9babb4af63", "sae_id": "layer_13/width_16k/canonical", "features": 16384},
+      "alignment_dataset": {"sampling": "stratified", "pool_size": 100000, "num_samples": 20000}
+    },
+    "llama_to_gemma_d50": {
+      "scenario": "Cross-architecture heterogeneous extension",
+      "model_a": {"name": "meta-llama/Llama-3.1-8B", "revision": "d04e592bb4f6aa9cfee91e2e20afa771667e1d4b", "layer": 16, "dtype": "float16"},
+      "model_b": {"name": "google/gemma-2-2b", "revision": "c5ebcd40d208330abc697524c919956e692655cf", "layer": 13, "dtype": "float16"},
+      "sae_a": {"loader": "sae_lens", "release": "llama_scope_lxr_8x", "repo_id": "fnlp/Llama3_1-8B-Base-LXR-8x", "revision": "8dbc1d85edfced43081c03c38b05514dbab1368b", "sae_id": "l16r_8x", "features": 32768},
+      "sae_b": {"loader": "sae_lens", "release": "gemma-scope-2b-pt-res-canonical", "repo_id": "google/gemma-scope-2b-pt-res", "revision": "fd571b47c1c64851e9b1989792367b9babb4af63", "sae_id": "layer_13/width_16k/canonical", "features": 16384},
+      "alignment_dataset": {"sampling": "stratified", "pool_size": 100000, "num_samples": 20000},
+      "scoring": {"token_pooling": "whitespace_word"}
+    },
+    "gemma_to_llama_d50": {
+      "scenario": "Cross-architecture heterogeneous extension",
+      "model_a": {"name": "google/gemma-2-2b", "revision": "c5ebcd40d208330abc697524c919956e692655cf", "layer": 13, "dtype": "float16"},
+      "model_b": {"name": "meta-llama/Llama-3.1-8B", "revision": "d04e592bb4f6aa9cfee91e2e20afa771667e1d4b", "layer": 16, "dtype": "float16"},
+      "sae_a": {"loader": "sae_lens", "release": "gemma-scope-2b-pt-res-canonical", "repo_id": "google/gemma-scope-2b-pt-res", "revision": "fd571b47c1c64851e9b1989792367b9babb4af63", "sae_id": "layer_13/width_16k/canonical", "features": 16384},
+      "sae_b": {"loader": "sae_lens", "release": "llama_scope_lxr_8x", "repo_id": "fnlp/Llama3_1-8B-Base-LXR-8x", "revision": "8dbc1d85edfced43081c03c38b05514dbab1368b", "sae_id": "l16r_8x", "features": 32768},
+      "alignment_dataset": {"sampling": "stratified", "pool_size": 100000, "num_samples": 20000},
+      "scoring": {"token_pooling": "whitespace_word"}
+    }
+  }
+}

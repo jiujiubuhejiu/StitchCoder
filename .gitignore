@@ -1,0 +1,63 @@
+# Experiment inputs, outputs, and process artifacts
+prepared/
+outputs/
+data/
+artifacts/
+runs/
+logs/
+cache/
+.cache/
+tmp/
+checkpoints/
+models/
+wandb/
+FULL_VALIDATION.md
+
+# Test and coverage artifacts
+tests/
+test-results/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Generated arrays, tables, checkpoints, and logs
+*.npy
+*.npz
+*.csv
+*.tsv
+*.parquet
+*.arrow
+*.pkl
+*.pickle
+*.pt
+*.pth
+*.bin
+*.safetensors
+*.log
+*.err
+slurm-*.out
+nohup.out
+*.tmp
+.nfs*
+
+# Python build products and environments
+__pycache__/
+*.py[cod]
+build/
+dist/
+*.egg-info/
+.venv/
+venv/
+
+# Local configuration, editors, and operating systems
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+.DS_Store
+*.swp
+*~

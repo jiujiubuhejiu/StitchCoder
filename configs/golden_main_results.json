@@ -1,0 +1,15 @@
+{
+  "source": "StitchCoder reference results for direction-specific BS-F and BS-R comparisons",
+  "tolerance": {"absolute_f1": 0.01},
+  "cells": {
+    "gemma2b_self_alignment_v2": {"bs_f_base_f1": 0.998, "bs_f_full_f1": 0.998, "bs_r_f1": 0.999},
+    "canonical_to_matryoshka_v2": {"bs_f_base_f1": 0.678, "bs_f_full_f1": 0.703, "bs_r_f1": 0.889},
+    "matryoshka_to_canonical_v2": {"bs_f_base_f1": 0.678, "bs_f_full_f1": 0.700, "bs_r_f1": 0.758},
+    "base_to_instruct_750m": {"bs_f_base_f1": 0.575, "bs_f_full_f1": 0.590, "bs_r_f1": 0.663},
+    "instruct_to_base_750m": {"bs_f_base_f1": 0.501, "bs_f_full_f1": 0.530, "bs_r_f1": 0.903},
+    "gemma2b_to_gemma9b_d50": {"bs_f_base_f1": 0.574, "bs_f_full_f1": 0.579, "bs_r_f1": 0.707},
+    "gemma9b_to_gemma2b_d50": {"bs_f_base_f1": 0.425, "bs_f_full_f1": 0.426, "bs_r_f1": 0.794},
+    "llama_to_gemma_d50": {"bs_f_base_f1": 0.347, "bs_f_full_f1": 0.351, "bs_r_f1": 0.640},
+    "gemma_to_llama_d50": {"bs_f_base_f1": 0.437, "bs_f_full_f1": 0.433, "bs_r_f1": 0.524}
+  }
+}
