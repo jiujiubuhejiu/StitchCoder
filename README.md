@@ -1,60 +1,60 @@
-# StitchCoder：跨模型稀疏特征对齐实验
+# StitchCoder: Cross-Model Sparse Feature Alignment
 
-本仓库提供 StitchCoder 跨模型稀疏特征对齐实验代码，用于比较不同语言模型及其独立训练的稀疏自动编码器（Sparse Autoencoders, SAEs）如何表示相同或相近的概念。
+StitchCoder is an experimental toolkit for comparing how independently trained sparse autoencoders (SAEs) represent the same or related concepts across language models.
 
-不同模型的残差流和 SAE 字典位于各自的坐标空间，特征索引与方向无法直接对应。为每一对模型重新训练联合字典又会使计算成本随模型数量快速增长。StitchCoder 先通过半正交 Procrustes 建立残差空间之间的几何映射，再复用现有 SAE 分析特征对应关系，从而支持可扩展的同模型、跨训练阶段、跨规模和跨架构表征比较。
+Each model's residual stream and SAE dictionary occupy a distinct coordinate system, so feature indices and directions are not directly comparable. Training a new joint dictionary for every model pair also scales poorly as the number of models grows. StitchCoder instead learns a geometric map between residual spaces with semi-orthogonal Procrustes alignment, then reuses existing SAEs to analyze feature correspondence. This design supports scalable comparisons across identical models, training stages, model sizes, and architectures.
 
-实验同时提供两种互补视角：Bias-Shift Forward（BS-F）衡量单个特征之间的直接对应，Bias-Shift Ridge（BS-R）衡量目标概念能否由一组源特征共同重构。二者结合可以区分“一对一特征匹配较弱”和“概念以分布式形式保留”这两类情况，为模型表征审计、模型差异分析和候选模型特有特征筛选提供量化依据。
+The experiments provide two complementary views. Bias-Shift Forward (BS-F) measures direct correspondence between individual features, while Bias-Shift Ridge (BS-R) measures whether a target concept can be reconstructed jointly from a set of source features. Together, they distinguish weak one-to-one matching from distributed concept preservation and provide quantitative evidence for representation auditing, model-difference analysis, and candidate model-specific feature discovery.
 
-## 多模型对比范围
+## Multi-Model Comparison Suite
 
-默认配置包含 9 组方向性实验，覆盖以下比较：
+The default configuration contains nine directional experiments:
 
-| 实验类别 | 模型与 SAE 设置 | 方向数 |
+| Comparison | Model and SAE setup | Directions |
 | --- | --- | ---: |
-| 同模型参考 | Gemma 2 2B 与自身的相同 SAE | 1 |
-| 同模型、不同 SAE | Gemma 2 2B 的 canonical SAE 与 Matryoshka SAE | 2 |
-| Base / Instruct | Gemma 2 2B 与 Gemma 2 2B-IT | 2 |
-| 跨模型规模 | Gemma 2 2B 与 Gemma 2 9B | 2 |
-| 跨模型架构 | Gemma 2 2B 与 Llama 3.1 8B | 2 |
+| Same-model reference | Gemma 2 2B paired with the same SAE | 1 |
+| Same model, different SAEs | Canonical and Matryoshka SAEs for Gemma 2 2B | 2 |
+| Base vs. instruction-tuned | Gemma 2 2B and Gemma 2 2B-IT | 2 |
+| Cross-scale | Gemma 2 2B and Gemma 2 9B | 2 |
+| Cross-architecture | Gemma 2 2B and Llama 3.1 8B | 2 |
 
-残差空间对齐使用确定性抽样的 Pile 文本，特征评分使用 C4 validation 文本。默认设置使用 6,000 条对齐文本和 4,000 条评分文本；跨规模与跨架构配置使用 20,000 条分层抽样文本拟合对齐矩阵。模型、数据集和 SAE revision、随机种子及主要超参数均集中记录在 `configs/paper_experiments.json` 中。
+Residual-space alignment uses deterministically sampled Pile text, and feature scoring uses C4 validation text. The default settings use 6,000 alignment documents and 4,000 scoring documents. Cross-scale and cross-architecture configurations use 20,000 stratified documents to fit the alignment matrix. Model identifiers, datasets, SAE revisions, random seeds, and primary hyperparameters are defined in `configs/paper_experiments.json`.
 
-## 核心方法
+## Core Methods
 
-BS-F 将源 SAE 解码方向通过残差空间映射投影到目标空间，计算特征对的余弦对应关系，并使用 median centroid、`top1 > 0.10`、`top1-top2 >= 0.05` 和 `[-4,4]` 偏置修正。最终结果采用激活频率加权的双向 greedy precision、recall 和 F1 汇总直接特征对应程度。
+BS-F projects source SAE decoder directions into the target residual space, measures feature-pair correspondence with cosine similarity, and applies bias correction. Activation-frequency-weighted bidirectional greedy precision, recall, and F1 summarize direct feature correspondence.
 
-BS-R 在对齐的 post-ReLU SAE 激活上拟合带非正则化截距的 ridge map。默认使用按文档划分的 80/20 train/evaluation split、`lambda=100` 和 ReLU 重构，再以相同的加权 greedy 指标评估分布式对应关系。Self-Slot Recovery（SSR）进一步衡量重构是否保持目标特征身份。跨 tokenizer 的 Llama–Gemma 实验通过共享空白词跨度完成池化与配对。
+BS-R fits a ridge map with an unregularized intercept between aligned post-ReLU SAE activations. By default, it uses a document-level 80/20 train/evaluation split, `lambda=100`, and ReLU reconstruction, then evaluates distributed correspondence with the same weighted greedy metrics. Self-Slot Recovery (SSR) additionally measures whether reconstruction preserves target-feature identity. Cross-tokenizer Llama–Gemma experiments pool and pair activations over shared whitespace-delimited word spans.
 
-模型激活提取统一使用 eager attention，使支持的 Transformers 版本遵循一致的实验数值路径。
+Activation extraction consistently uses eager attention so that supported Transformers versions follow the same numerical path.
 
-## 项目结构
+## Repository Layout
 
 ```text
 StitchCoder/
 ├── configs/
-│   ├── paper_experiments.json      # 9 组方向性实验的模型、SAE、数据与超参数
-│   └── golden_main_results.json    # 完整配置的参考指标与比较容差
+│   ├── paper_experiments.json      # Models, SAEs, data, and hyperparameters for nine directional experiments
+│   └── golden_main_results.json    # Reference metrics and comparison tolerances for complete configurations
 ├── common/
-│   ├── activation_extraction.py    # 模型 hook、残差和 SAE 激活提取
-│   ├── alignment.py                # L2 行归一化、半正交 Procrustes
-│   ├── data_utils.py               # Pile/C4 的确定性抽样
-│   ├── metrics.py                  # 分块余弦、dead-feature、P/R/F1、SSR
-│   ├── sae_loading.py              # Hugging Face 与自定义 SAE 加载
-│   └── word_alignment.py           # 跨 tokenizer 的空白词跨度池化
+│   ├── activation_extraction.py    # Model hooks and residual/SAE activation extraction
+│   ├── alignment.py                # L2 row normalization and semi-orthogonal Procrustes alignment
+│   ├── data_utils.py               # Deterministic sampling from Pile and C4
+│   ├── metrics.py                  # Chunked cosine scores, dead-feature handling, P/R/F1, and SSR
+│   ├── sae_loading.py              # Hugging Face and custom SAE loading
+│   └── word_alignment.py           # Whitespace-span pooling across tokenizers
 ├── bs_f/
-│   ├── run_bias_shift_full.py      # BS-F 主实现
-│   └── run_bias_shift_full_heldout.py # 文档不相交评估
-├── bs_r/run_bias_shift_ridge.py    # BS-R 主实现
-├── prepare_inputs.py               # 模型与数据到标准实验数组
-├── run_paper_reproduction.py       # 多配置运行、聚合与参考指标比较
+│   ├── run_bias_shift_full.py      # Main BS-F implementation
+│   └── run_bias_shift_full_heldout.py # Document-disjoint evaluation
+├── bs_r/run_bias_shift_ridge.py    # Main BS-R implementation
+├── prepare_inputs.py               # Convert models and datasets into standardized experiment arrays
+├── run_paper_reproduction.py       # Run configurations, aggregate metrics, and compare reference results
 ├── requirements.txt
 └── .gitignore
 ```
 
-## 环境配置
+## Installation
 
-建议使用 Python 3.12 和 CUDA GPU：
+Python 3.12 and a CUDA-capable GPU are recommended:
 
 ```bash
 git clone https://github.com/jiujiubuhejiu/StitchCoder.git
@@ -64,33 +64,33 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-Gemma 和 Llama 权重需要对应的 Hugging Face 访问权限。完成模型许可确认后，执行：
+Access to the Gemma and Llama weights requires the corresponding Hugging Face permissions. After accepting the model licenses, authenticate with:
 
 ```bash
 huggingface-cli login
 ```
 
-Base / Instruct 对比使用配套的 instruct SAE。通过环境变量配置 checkpoint 路径：
+The base/instruction-tuned comparison uses its matching instruction-tuned SAE. Set the checkpoint path through an environment variable:
 
 ```bash
 export STITCHCODER_IT_SAE_PATH=/path/to/final_topk
 ```
 
-该 checkpoint 包含 SAE Lens 可读取的 `cfg.json` 和 `sae_weights.safetensors`。
+The checkpoint must contain `cfg.json` and `sae_weights.safetensors` in a format readable by SAE Lens.
 
-## 运行实验
+## Running Experiments
 
-### 查看多模型对比配置
+### List available model comparisons
 
 ```bash
 python prepare_inputs.py --list-cells
 ```
 
-每个配置名称对应一个有方向的 source-to-target 比较；模型、层、SAE 宽度和数据设置可在 `configs/paper_experiments.json` 中查看。
+Each configuration name represents a directional source-to-target comparison. Model identifiers, layers, SAE widths, and data settings are available in `configs/paper_experiments.json`.
 
-### 运行单个模型对比
+### Run one model comparison
 
-先提取激活并准备 BS-F 与 BS-R 共用的标准数组：
+First, extract activations and prepare the standardized arrays shared by BS-F and BS-R:
 
 ```bash
 python prepare_inputs.py \
@@ -100,7 +100,7 @@ python prepare_inputs.py \
   --device-b cuda:0
 ```
 
-再运行两种对应关系分析：
+Then run both correspondence analyses:
 
 ```bash
 python run_paper_reproduction.py \
@@ -112,16 +112,16 @@ python run_paper_reproduction.py \
   --device cuda:0
 ```
 
-### 运行全部多模型对比
+### Run the complete multi-model suite
 
 ```bash
 python prepare_inputs.py --all --output-root prepared --device-a cuda:0 --device-b cuda:0
 python run_paper_reproduction.py --all --prepared-root prepared --output-root outputs/all_comparisons --method both --backend cuda --device cuda:0
 ```
 
-聚合入口会生成 `paper_results.csv`、`paper_results.json` 和各配置的指标数组。对于完整默认配置，它还会使用 `configs/golden_main_results.json` 中的参考指标进行容差检查。
+The aggregation entry point writes `paper_results.csv`, `paper_results.json`, and per-configuration metric arrays. For complete default configurations, it also checks the results against the reference metrics and tolerances in `configs/golden_main_results.json`.
 
-### 分别运行 BS-F 与 BS-R
+### Run BS-F and BS-R separately
 
 ```bash
 python bs_f/run_bias_shift_full.py \
@@ -134,9 +134,9 @@ python bs_r/run_bias_shift_ridge.py \
   --backend cuda
 ```
 
-## 文档不相交评估
+## Document-Disjoint Evaluation
 
-BS-F 支持独立的 calibration/evaluation 文档划分。下面的配置在前 2,000 个 C4 文档上确定特征匹配、置信门和偏置修正，并在后 2,000 个文档上冻结这些决定后重新评分：
+BS-F supports independent calibration and evaluation document splits. The following configuration selects feature matches, confidence gates, and bias correction on the first 2,000 C4 documents, freezes those decisions, and rescores them on the final 2,000 documents:
 
 ```bash
 python bs_f/run_bias_shift_full_heldout.py \
@@ -145,11 +145,11 @@ python bs_f/run_bias_shift_full_heldout.py \
   --calibration-sequences 2000
 ```
 
-输出记录两个文档分区、文档交集数量和 `evaluation_refit` 状态。Pile 文本拟合的 Procrustes 映射在两个评分分区中保持固定。
+The output records both document partitions, their overlap count, and the `evaluation_refit` status. The Procrustes map fitted on Pile text remains fixed across both scoring partitions.
 
-## BS-R 控制变量
+## BS-R Controls
 
-Ridge penalty、source-row shuffle 和 source capacity 可通过统一入口配置：
+The shared entry point exposes the ridge penalty, source-row shuffling, and source-feature capacity:
 
 ```bash
 python run_paper_reproduction.py --cell base_to_instruct_750m --method bs_r --ridge-lambda 10 --output-root outputs/ridge_lambda_10
@@ -157,8 +157,8 @@ python run_paper_reproduction.py --cell llama_to_gemma_d50 --method bs_r --row-s
 python run_paper_reproduction.py --cell llama_to_gemma_d50 --method bs_r --source-feature-limit 16384 --output-root outputs/source_capacity_16k
 ```
 
-为每组控制变量指定独立的 `--output-root`，可以直接比较不同条件下的 BS-R 指标与 SSR。
+Use a separate `--output-root` for each control setting to compare BS-R metrics and SSR directly across conditions.
 
-## 生成文件管理
+## Generated Files
 
-输入数组、实验输出、模型文件、日志、缓存和环境目录均由仓库根目录下的 `.gitignore` 管理。Git 提交保留实现源码、运行配置、依赖说明和使用文档，实验过程文件保存在工作目录中。
+The repository-root `.gitignore` excludes input arrays, experiment outputs, model files, logs, caches, and environment directories. Version control retains the implementation, run configurations, dependency specification, and documentation, while runtime artifacts remain in their working directories.
