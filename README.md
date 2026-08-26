@@ -31,7 +31,7 @@ BS-R 在对齐的 post-ReLU SAE 激活上拟合带非正则化截距的 ridge ma
 ## 项目结构
 
 ```text
-key_code/
+StitchCoder/
 ├── configs/
 │   ├── paper_experiments.json      # 9 组方向性实验的模型、SAE、数据与超参数
 │   └── golden_main_results.json    # 完整配置的参考指标与比较容差
@@ -57,7 +57,8 @@ key_code/
 建议使用 Python 3.12 和 CUDA GPU：
 
 ```bash
-cd key_code
+git clone https://github.com/jiujiubuhejiu/StitchCoder.git
+cd StitchCoder
 python -m venv .venv
 . .venv/bin/activate
 pip install -r requirements.txt
@@ -160,4 +161,4 @@ python run_paper_reproduction.py --cell llama_to_gemma_d50 --method bs_r --sourc
 
 ## 生成文件管理
 
-输入数组、实验输出、模型文件、日志、缓存和环境目录均由 `key_code/.gitignore` 管理。Git 提交保留实现源码、运行配置、依赖说明和使用文档，实验过程文件保存在工作目录中。
+输入数组、实验输出、模型文件、日志、缓存和环境目录均由仓库根目录下的 `.gitignore` 管理。Git 提交保留实现源码、运行配置、依赖说明和使用文档，实验过程文件保存在工作目录中。
