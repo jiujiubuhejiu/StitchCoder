@@ -1,0 +1,364 @@
+{
+  "paper_source": "outputs/paper/TMLR/TMLR/paper.tex",
+  "paper_sha256": "de536ac53b2668efa89345f6608750c1fa173cd6e7c947df7e794724a8823e36",
+  "selection_rule": "Use the scripts and data that reproduce the active includegraphics assets; modification times are supporting evidence only.",
+  "files": [
+    {
+      "kind": "paper_asset",
+      "packaged_path": "reference/coder_framework2.pdf",
+      "source_path": "outputs/paper/TMLR/TMLR/figures/coder_framework2.pdf",
+      "source_mtime_utc": "2026-08-04T08:12:08+00:00",
+      "source_sha256": "2c1a12d108eea11204c0252099b30447938565cd6b98ab757f372fdde43adb32",
+      "packaged_sha256": "2c1a12d108eea11204c0252099b30447938565cd6b98ab757f372fdde43adb32",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "paper_asset",
+      "packaged_path": "reference/alignment_ladder2_a.pdf",
+      "source_path": "outputs/paper/TMLR/TMLR/figures/alignment_ladder2_a.pdf",
+      "source_mtime_utc": "2026-08-18T06:24:38.698999+00:00",
+      "source_sha256": "f612e4f508efbb6ffb58e1438a387725b6877ea18787d087e227c17d7930b10f",
+      "packaged_sha256": "f612e4f508efbb6ffb58e1438a387725b6877ea18787d087e227c17d7930b10f",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "paper_asset",
+      "packaged_path": "reference/alignment_ladder2_b.pdf",
+      "source_path": "outputs/paper/TMLR/TMLR/figures/alignment_ladder2_b.pdf",
+      "source_mtime_utc": "2026-08-18T06:24:39.038005+00:00",
+      "source_sha256": "1d2af96a22194aa9c8ff97d2aada0ec5492db23584f5ecb073ae20d329173740",
+      "packaged_sha256": "1d2af96a22194aa9c8ff97d2aada0ec5492db23584f5ecb073ae20d329173740",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "paper_asset",
+      "packaged_path": "reference/minder_pie.pdf",
+      "source_path": "outputs/paper/TMLR/TMLR/figures/minder_pie.pdf",
+      "source_mtime_utc": "2026-08-17T06:32:17.290499+00:00",
+      "source_sha256": "49074489acf78939b4fc2186cd1f7fdc80d3c537664d108558cc20dc6d2e1114",
+      "packaged_sha256": "49074489acf78939b4fc2186cd1f7fdc80d3c537664d108558cc20dc6d2e1114",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "paper_asset",
+      "packaged_path": "reference/causal_optionC.png",
+      "source_path": "outputs/paper/TMLR/TMLR/figures/causal_optionC.png",
+      "source_mtime_utc": "2026-08-18T06:42:55.220108+00:00",
+      "source_sha256": "6319f51754ea812558872ebaf1c065d3fdea3ac22b5c541031f7f09a1f57a4cc",
+      "packaged_sha256": "6319f51754ea812558872ebaf1c065d3fdea3ac22b5c541031f7f09a1f57a4cc",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "paper_asset",
+      "packaged_path": "reference/lambda_sweep.png",
+      "source_path": "outputs/paper/TMLR/TMLR/figures/lambda_sweep.png",
+      "source_mtime_utc": "2026-08-04T08:12:08+00:00",
+      "source_sha256": "f078125a6d964b8b0f3f8f1694941b16e8375f66f53af77f41c6133e68087288",
+      "packaged_sha256": "f078125a6d964b8b0f3f8f1694941b16e8375f66f53af77f41c6133e68087288",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "paper_asset",
+      "packaged_path": "reference/de_scan_a.pdf",
+      "source_path": "outputs/paper/TMLR/TMLR/figures/de_scan_a.pdf",
+      "source_mtime_utc": "2026-08-22T04:33:11.309949+00:00",
+      "source_sha256": "ce94cdfd4aa3349dfaa4e7fed27df5c12ca05ec6704a4671624b4273d56a507a",
+      "packaged_sha256": "ce94cdfd4aa3349dfaa4e7fed27df5c12ca05ec6704a4671624b4273d56a507a",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "paper_asset",
+      "packaged_path": "reference/de_scan_b.pdf",
+      "source_path": "outputs/paper/TMLR/TMLR/figures/de_scan_b.pdf",
+      "source_mtime_utc": "2026-08-22T04:33:11.843959+00:00",
+      "source_sha256": "ef85d3c395e6479bfb227c7ab30d29c738b649651eeade1c53e9e0b234952f32",
+      "packaged_sha256": "ef85d3c395e6479bfb227c7ab30d29c738b649651eeade1c53e9e0b234952f32",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "data",
+      "packaged_path": "data/alignment_ladder_data.json",
+      "source_path": "paper/figures/alignment_ladder_data.json",
+      "source_mtime_utc": "2026-05-01T22:10:54.455615+00:00",
+      "source_sha256": "6745cc96b22b8739668cc858c392476a95c4506cfa7b2e72692a1ea7480d6a24",
+      "packaged_sha256": "6745cc96b22b8739668cc858c392476a95c4506cfa7b2e72692a1ea7480d6a24",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "extracted_plot_data",
+      "packaged_path": "data/alignment_self.json",
+      "source_path": "outputs/paper/TMLR/TMLR/figures/render_alignment_ladder.py",
+      "source_mtime_utc": "2026-08-18T06:24:30.467856+00:00",
+      "source_sha256": "b5262a80f7bf345adc3d2bda77a3f4ebd2ac42ff4da8c84dc63dc0f6080b680e",
+      "packaged_sha256": "e30411fcb10adeba7b90df01c716299fd00f17059fbf2b70922824a8457e2a13",
+      "note": "SELF_BSF and SELF_BSR constants in the selected renderer; not newly estimated."
+    },
+    {
+      "kind": "plot_script",
+      "packaged_path": "scripts/render_alignment_ladder.py",
+      "source_path": "outputs/paper/TMLR/TMLR/figures/render_alignment_ladder.py",
+      "source_mtime_utc": "2026-08-18T06:24:30.467856+00:00",
+      "source_sha256": "b5262a80f7bf345adc3d2bda77a3f4ebd2ac42ff4da8c84dc63dc0f6080b680e",
+      "packaged_sha256": "0e1d83bf972d76c4e5dc51b31ed3686f2fedc437f132e53caf9cc61300270d57",
+      "note": "Redirected input/output paths and moved self-reference values to JSON; original plotting logic preserved."
+    },
+    {
+      "kind": "extracted_plot_data",
+      "packaged_path": "data/minder_categories.json",
+      "source_path": "outputs/paper/figures/make_minder_pie.py",
+      "source_mtime_utc": "2026-08-17T06:31:42.755896+00:00",
+      "source_sha256": "a6b7c4b5ae1c014efa012df42b9fe727afc4623e2e9960f3b6b6543421125ad8",
+      "packaged_sha256": "e1e5f7072d25b1b47d0c287404cb091054e813c652f68144bdce1092a67f5acf",
+      "note": "Exact category names and counts extracted from the active pie renderer; counts sum to 136."
+    },
+    {
+      "kind": "plot_script",
+      "packaged_path": "scripts/make_minder_pie.py",
+      "source_path": "outputs/paper/figures/make_minder_pie.py",
+      "source_mtime_utc": "2026-08-17T06:31:42.755896+00:00",
+      "source_sha256": "a6b7c4b5ae1c014efa012df42b9fe727afc4623e2e9960f3b6b6543421125ad8",
+      "packaged_sha256": "998178f8009740f823750bf0528252c666804304633bd2b86c90dab62f212676",
+      "note": "Moved fixed plot counts into JSON and redirected the output; original pie layout preserved."
+    },
+    {
+      "kind": "extracted_plot_data",
+      "packaged_path": "data/causal_optionC.json",
+      "source_path": "paper/figures/plot_causal.py",
+      "source_mtime_utc": "2026-08-20T00:15:40.998763+00:00",
+      "source_sha256": "71780796993716f621f2541921db53600422332695f1814b204418873b36144a",
+      "packaged_sha256": "f362dffb3471b37ef8d26193dedb0b30be7ff5590e02f602fbb8a928be2bd633",
+      "note": "Exact 13 forest-plot rows extracted from plot_option_c, including its fixed approximate whiskers."
+    },
+    {
+      "kind": "data",
+      "packaged_path": "data/causal/positive_control_summary.json",
+      "source_path": "outputs/positive_control/summary.json",
+      "source_mtime_utc": "2026-04-30T05:44:01.113129+00:00",
+      "source_sha256": "25186aaaa32bbfe3fc205770acc47bfc8482ea4708d500963a8e5612bd49e3b2",
+      "packaged_sha256": "25186aaaa32bbfe3fc205770acc47bfc8482ea4708d500963a8e5612bd49e3b2",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "data",
+      "packaged_path": "data/causal/generation_quality.json",
+      "source_path": "outputs/positive_control/generation_quality.json",
+      "source_mtime_utc": "2026-05-04T22:57:58.103369+00:00",
+      "source_sha256": "3448631d848bc203e3507d1c7cd2044efe2682600ae34c4d7323a01755679505",
+      "packaged_sha256": "3448631d848bc203e3507d1c7cd2044efe2682600ae34c4d7323a01755679505",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "data",
+      "packaged_path": "data/causal/null_test_summary.json",
+      "source_path": "outputs/causal_intervention_v2/summary.json",
+      "source_mtime_utc": "2026-04-29T22:29:46.484714+00:00",
+      "source_sha256": "135c24bbbce9db2fec76a2b4ed72000932548486e7bae3ea69568956118bc659",
+      "packaged_sha256": "135c24bbbce9db2fec76a2b4ed72000932548486e7bae3ea69568956118bc659",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "plot_script",
+      "packaged_path": "scripts/plot_causal.py",
+      "source_path": "paper/figures/plot_causal.py",
+      "source_mtime_utc": "2026-08-20T00:15:40.998763+00:00",
+      "source_sha256": "71780796993716f621f2541921db53600422332695f1814b204418873b36144a",
+      "packaged_sha256": "6859edc4aae3827bddfd4969f3e008afd6868a949afc7dbb807be823b710f287",
+      "note": "Kept the active option-C renderer, extracted exact rows to JSON, removed unused option-A/palette variants, and redirected outputs."
+    },
+    {
+      "kind": "data",
+      "packaged_path": "data/lambda_sweep/lambda_10.json",
+      "source_path": "outputs/e12_remix_lambda_sweep/lambda_10/base_to_instruct_750m/remix_f1.json",
+      "source_mtime_utc": "2026-04-20T03:01:23.222516+00:00",
+      "source_sha256": "2be871ea8ab0f3278b0a17d80575212e8d2fb8e0aca6e64fd9bb9c9843c12ca0",
+      "packaged_sha256": "2be871ea8ab0f3278b0a17d80575212e8d2fb8e0aca6e64fd9bb9c9843c12ca0",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "data",
+      "packaged_path": "data/lambda_sweep/lambda_30.json",
+      "source_path": "outputs/e12_remix_lambda_sweep/lambda_30/base_to_instruct_750m/remix_f1.json",
+      "source_mtime_utc": "2026-04-20T03:22:41.758770+00:00",
+      "source_sha256": "647e52f13f1c84aaadc89568d7befa15e7dd8b805731e9d561836be9f026b080",
+      "packaged_sha256": "647e52f13f1c84aaadc89568d7befa15e7dd8b805731e9d561836be9f026b080",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "data",
+      "packaged_path": "data/lambda_sweep/lambda_100.json",
+      "source_path": "outputs/e12_remix_lambda_sweep/lambda_100/base_to_instruct_750m/remix_f1.json",
+      "source_mtime_utc": "2026-04-20T03:43:21.885402+00:00",
+      "source_sha256": "be14b8fcb5f5a511eaefc894b0c2d02e2abf1e3db4cd2724c977dd795266a949",
+      "packaged_sha256": "be14b8fcb5f5a511eaefc894b0c2d02e2abf1e3db4cd2724c977dd795266a949",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "data",
+      "packaged_path": "data/lambda_sweep/lambda_300.json",
+      "source_path": "outputs/e12_remix_lambda_sweep/lambda_300/base_to_instruct_750m/remix_f1.json",
+      "source_mtime_utc": "2026-04-20T04:10:03.419299+00:00",
+      "source_sha256": "69ac263d4b6057c357e106e2a909f7b77a7dd1a89e73cdf511839f88aeb3f368",
+      "packaged_sha256": "69ac263d4b6057c357e106e2a909f7b77a7dd1a89e73cdf511839f88aeb3f368",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "data",
+      "packaged_path": "data/lambda_sweep/lambda_1000.json",
+      "source_path": "outputs/e12_remix_lambda_sweep/lambda_1000/base_to_instruct_750m/remix_f1.json",
+      "source_mtime_utc": "2026-04-20T04:39:11.316682+00:00",
+      "source_sha256": "33c470d9f3ffebe4d0e9a541205493d83a0dfb48f6f5344cf1352b11c0027848",
+      "packaged_sha256": "33c470d9f3ffebe4d0e9a541205493d83a0dfb48f6f5344cf1352b11c0027848",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "plot_script",
+      "packaged_path": "scripts/plot_lambda_sweep.py",
+      "source_path": "paper/figures/plot_lambda_sweep.py",
+      "source_mtime_utc": "2026-05-05T04:21:19.305346+00:00",
+      "source_sha256": "b09ce18a766e1de70e1e7458e31c68d7c289014fb4a462e674f41c5d694e83c4",
+      "packaged_sha256": "8f83f1fb3e2cf9485db95dedccf88fe647fdd8b07ba111378880ac3e30795143",
+      "note": "Original five per-lambda result JSON files and plotting logic; input/output paths made local to this package."
+    },
+    {
+      "kind": "data",
+      "packaged_path": "data/de_scan_bias_shift_full.json",
+      "source_path": "outputs/case_study_bias_shift_full_750M_n1000/de_scan_bias_shift_full.json",
+      "source_mtime_utc": "2026-04-06T19:10:50.288656+00:00",
+      "source_sha256": "9f4e6d6e9dc26fb2cbc551e99bcaa42193853c924cc740fc8600f3fb36332c50",
+      "packaged_sha256": "9f4e6d6e9dc26fb2cbc551e99bcaa42193853c924cc740fc8600f3fb36332c50",
+      "note": "Unmodified copy."
+    },
+    {
+      "kind": "plot_script",
+      "packaged_path": "scripts/render_de_scan.py",
+      "source_path": "outputs/paper/TMLR/TMLR/figures/render_de_scan.py",
+      "source_mtime_utc": "2026-08-22T04:30:22.038868+00:00",
+      "source_sha256": "667b2d5213a9a72fe2f053bdf030cbf09fb1d985e930c1e1025203747f89f72a",
+      "packaged_sha256": "24f000eeb5d30a5f939c795ca23f682578f4e34b666f6da01d749418fa0f33ed",
+      "note": "Original final two-panel renderer, frozen 31-point scan, and selected k=1000; only filesystem paths changed."
+    }
+  ],
+  "figures": [
+    {
+      "figure": "1",
+      "assets": [
+        "coder_framework2.pdf"
+      ],
+      "script": null,
+      "data": [],
+      "status": "PDF asset only; no matching editable drawing source found. render_all.py copies the original PDF."
+    },
+    {
+      "figure": "2",
+      "assets": [
+        "alignment_ladder2_a.pdf",
+        "alignment_ladder2_b.pdf"
+      ],
+      "script": "scripts/render_alignment_ladder.py",
+      "data": [
+        "data/alignment_ladder_data.json",
+        "data/alignment_self.json"
+      ]
+    },
+    {
+      "figure": "3",
+      "assets": [
+        "minder_pie.pdf"
+      ],
+      "script": "scripts/make_minder_pie.py",
+      "data": [
+        "data/minder_categories.json"
+      ]
+    },
+    {
+      "figure": "4",
+      "assets": [
+        "causal_optionC.png"
+      ],
+      "script": "scripts/plot_causal.py",
+      "data": [
+        "data/causal_optionC.json",
+        "data/causal/"
+      ],
+      "note": "Whiskers are fixed plotting approximations, not recomputed bootstrap intervals."
+    },
+    {
+      "figure": "5",
+      "assets": [
+        "lambda_sweep.png"
+      ],
+      "script": "scripts/plot_lambda_sweep.py",
+      "data": [
+        "data/lambda_sweep/"
+      ]
+    },
+    {
+      "figure": "6",
+      "assets": [
+        "de_scan_a.pdf",
+        "de_scan_b.pdf"
+      ],
+      "script": "scripts/render_de_scan.py",
+      "data": [
+        "data/de_scan_bias_shift_full.json"
+      ]
+    }
+  ],
+  "excluded_alternatives": [
+    {
+      "source": "outputs/paper/TMLR/TMLR/figures/render_alignment_ladder_deep.py",
+      "reason": "Unused palette variants; the manuscript includes the unsuffixed blue panels.",
+      "mtime_utc": "2026-08-17T07:17:41.299447+00:00"
+    },
+    {
+      "source": "outputs/paper/TMLR/TMLR/figures/render_alignment_ladder_muted.py",
+      "reason": "Unused palette variants; the manuscript includes the unsuffixed blue panels.",
+      "mtime_utc": "2026-08-17T06:40:44.284213+00:00"
+    },
+    {
+      "source": "outputs/paper/TMLR/TMLR/figures/render_alignment_ladder_refined.py",
+      "reason": "Unused palette variants; the manuscript includes the unsuffixed blue panels.",
+      "mtime_utc": "2026-08-17T07:13:37.961870+00:00"
+    },
+    {
+      "source": "outputs/paper/TMLR/TMLR/figures/render_alignment_ladder_soft.py",
+      "reason": "Unused palette variants; the manuscript includes the unsuffixed blue panels.",
+      "mtime_utc": "2026-08-17T07:35:52.486351+00:00"
+    },
+    {
+      "source": "paper/figures/plot_alignment_ladder.py",
+      "reason": "Older combined/directional layouts, not the active TMLR panels.",
+      "mtime_utc": "2026-05-06T23:37:19.006429+00:00"
+    },
+    {
+      "source": "paper/figures/plot_alignment_merged.py",
+      "reason": "Older combined/directional layouts, not the active TMLR panels.",
+      "mtime_utc": "2026-05-03T16:53:29.245792+00:00"
+    },
+    {
+      "source": "paper/figures/plot_alignment_per_direction.py",
+      "reason": "Older combined/directional layouts, not the active TMLR panels.",
+      "mtime_utc": "2026-05-06T22:55:30.434895+00:00"
+    },
+    {
+      "source": "scripts/plot_de_scan.py",
+      "reason": "Earlier combined DE figure with titles/legend; replaced by the two active TMLR panel assets.",
+      "mtime_utc": "2026-05-05T02:26:49.354742+00:00"
+    },
+    {
+      "source": "paper_tex/Neurips-2026/figures/make_minder_pie.py",
+      "reason": "Earlier NeurIPS pie layout, not the active TMLR pie.",
+      "mtime_utc": "2026-05-07T08:56:01.272520+00:00"
+    },
+    {
+      "source": "outputs/paper/figures/make_causal_framework.py",
+      "reason": "Produces coder_framework_causal.pdf for a different manuscript; not coder_framework2.pdf.",
+      "mtime_utc": "2026-08-02T18:39:58.085022+00:00"
+    },
+    {
+      "source": "plot_figures.py",
+      "reason": "Older metrics and model groupings do not match the active manuscript.",
+      "mtime_utc": "2026-03-04T13:59:34.739254+00:00"
+    }
+  ]
+}

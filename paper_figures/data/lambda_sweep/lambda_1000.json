@@ -1,0 +1,27 @@
+{
+  "cell": "base_to_instruct_750m",
+  "model_a": "google/gemma-2-2b",
+  "model_b": "google/gemma-2-2b-it",
+  "layer_a": 13,
+  "layer_b": 13,
+  "n_train_tokens": 200053,
+  "n_test_tokens": 50047,
+  "d_a": 32768,
+  "d_b": 32768,
+  "ridge_lambda": 1000.0,
+  "f1_remix": {
+    "precision": 0.6919823790601747,
+    "recall": 0.6550041735268263,
+    "f1": 0.6729857034146769,
+    "sample_dead_a": 1332,
+    "sample_dead_b": 3461,
+    "native_dead_a": 1330,
+    "native_dead_b": 1330,
+    "m_killed_a": 2,
+    "m_killed_b": 2338,
+    "m_killed_a_ratio": 6.361727845282778e-05,
+    "m_killed_b_ratio": 0.07436859851135569
+  },
+  "n_alive_considered": 29099,
+  "frac_diag_wins": 0.3300457060380082
+}

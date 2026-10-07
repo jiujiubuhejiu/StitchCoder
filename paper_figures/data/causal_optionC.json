@@ -1,0 +1,104 @@
+{
+  "n_per_arm": 50,
+  "ci_note": "ci_half values are frozen approximations from the original plotting code, not bootstrap intervals recomputed from raw samples. Retained to reproduce the paper image.",
+  "columns": [
+    "label",
+    "delta_refusal",
+    "ci_half",
+    "group",
+    "generation_collapse"
+  ],
+  "rows": [
+    [
+      "Instruct (ablate 136)",
+      0.0,
+      0.12,
+      "null",
+      false
+    ],
+    [
+      "Instruct (random ablation)",
+      0.0,
+      0.12,
+      "null",
+      false
+    ],
+    [
+      "Base (inject 136)",
+      0.0,
+      0.06,
+      "null",
+      false
+    ],
+    [
+      "Instruct ($-\\alpha=0.5$)",
+      0.0,
+      0.12,
+      "pc_clean",
+      false
+    ],
+    [
+      "Instruct ($-\\alpha=1$)",
+      -0.2,
+      0.12,
+      "pc_clean",
+      false
+    ],
+    [
+      "Instruct ($-\\alpha=2$)",
+      -0.9,
+      0.08,
+      "pc_clean",
+      false
+    ],
+    [
+      "Instruct ($-\\alpha=4$)",
+      -0.96,
+      0.06,
+      "pc_clean",
+      false
+    ],
+    [
+      "Instruct ($-\\alpha=8$)",
+      -0.96,
+      0.06,
+      "pc_clean",
+      false
+    ],
+    [
+      "Base ($+\\alpha=0.5$)",
+      0.06,
+      0.12,
+      "pc_degen",
+      false
+    ],
+    [
+      "Base ($+\\alpha=1$)",
+      -0.02,
+      0.12,
+      "pc_degen",
+      false
+    ],
+    [
+      "Base ($+\\alpha=2$)",
+      0.08,
+      0.12,
+      "pc_degen",
+      true
+    ],
+    [
+      "Base ($+\\alpha=4$)",
+      0.26,
+      0.12,
+      "pc_degen",
+      true
+    ],
+    [
+      "Base ($+\\alpha=8$)",
+      -0.02,
+      0.12,
+      "pc_degen",
+      true
+    ]
+  ]
+}

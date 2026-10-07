@@ -159,6 +159,12 @@ python run_paper_reproduction.py --cell llama_to_gemma_d50 --method bs_r --sourc
 
 Use a separate `--output-root` for each control setting to compare BS-R metrics and SSR directly across conditions.
 
+## Paper Figures
+
+The [paper_figures](paper_figures/README.md) folder contains the plotting scripts, frozen data, and reference assets for the TMLR manuscript. Run `python paper_figures/render_all.py` to regenerate the figures; plotting dependencies are listed in `paper_figures/requirements.txt`.
+
 ## Generated Files
 
 The repository-root `.gitignore` excludes input arrays, experiment outputs, model files, logs, caches, and environment directories. Version control retains the implementation, run configurations, dependency specification, and documentation, while runtime artifacts remain in their working directories.
+
+Small frozen plotting inputs and manuscript reference images are included under `paper_figures/`; regenerated figures are ignored.

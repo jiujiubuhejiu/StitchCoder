@@ -1,0 +1,130 @@
+{
+  "method": "PDF assets rasterized at 120 dpi with pdftoppm; PNG assets compared directly; static framework compared byte-for-byte.",
+  "assets": [
+    {
+      "asset": "coder_framework2.pdf",
+      "comparison": "binary",
+      "identical": true
+    },
+    {
+      "asset": "alignment_ladder2_a.pdf",
+      "comparison": "pixel",
+      "shape_original": [
+        534,
+        856,
+        3
+      ],
+      "shape_rendered": [
+        534,
+        856,
+        3
+      ],
+      "identical": true,
+      "fraction_pixels_changed": 0.0,
+      "mean_absolute_channel_difference": 0.0
+    },
+    {
+      "asset": "alignment_ladder2_b.pdf",
+      "comparison": "pixel",
+      "shape_original": [
+        514,
+        856,
+        3
+      ],
+      "shape_rendered": [
+        514,
+        856,
+        3
+      ],
+      "identical": true,
+      "fraction_pixels_changed": 0.0,
+      "mean_absolute_channel_difference": 0.0
+    },
+    {
+      "asset": "minder_pie.pdf",
+      "comparison": "pixel",
+      "shape_original": [
+        554,
+        977,
+        3
+      ],
+      "shape_rendered": [
+        554,
+        977,
+        3
+      ],
+      "identical": false,
+      "fraction_pixels_changed": 1.8475477498715954e-06,
+      "mean_absolute_channel_difference": 1.1085286499229573e-05
+    },
+    {
+      "asset": "causal_optionC.png",
+      "comparison": "pixel",
+      "shape_original": [
+        819,
+        1465,
+        3
+      ],
+      "shape_rendered": [
+        819,
+        1465,
+        3
+      ],
+      "identical": true,
+      "fraction_pixels_changed": 0.0,
+      "mean_absolute_channel_difference": 0.0
+    },
+    {
+      "asset": "lambda_sweep.png",
+      "comparison": "pixel",
+      "shape_original": [
+        695,
+        1100,
+        3
+      ],
+      "shape_rendered": [
+        695,
+        1100,
+        3
+      ],
+      "identical": true,
+      "fraction_pixels_changed": 0.0,
+      "mean_absolute_channel_difference": 0.0
+    },
+    {
+      "asset": "de_scan_a.pdf",
+      "comparison": "pixel",
+      "shape_original": [
+        326,
+        398,
+        3
+      ],
+      "shape_rendered": [
+        326,
+        398,
+        3
+      ],
+      "identical": true,
+      "fraction_pixels_changed": 0.0,
+      "mean_absolute_channel_difference": 0.0
+    },
+    {
+      "asset": "de_scan_b.pdf",
+      "comparison": "pixel",
+      "shape_original": [
+        326,
+        398,
+        3
+      ],
+      "shape_rendered": [
+        326,
+        398,
+        3
+      ],
+      "identical": true,
+      "fraction_pixels_changed": 0.0,
+      "mean_absolute_channel_difference": 0.0
+    }
+  ],
+  "standalone_render": "PASS: isolated copy, unrelated working directory, all 8 manuscript assets present."
+}

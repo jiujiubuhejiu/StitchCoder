@@ -1,0 +1,109 @@
+{
+  "per_arm": {
+    "instruct_baseline": {
+      "n": 50,
+      "mean_n_tokens": 46.82,
+      "distinct_2": 0.9771596213495242,
+      "rep4_rate": 0.0019972388403129314,
+      "degenerate_rate": 0.0
+    },
+    "instruct_ablate136": {
+      "n": 50,
+      "mean_n_tokens": 46.54,
+      "distinct_2": 0.9766810534111505,
+      "rep4_rate": 0.0015094339622641509,
+      "degenerate_rate": 0.0
+    },
+    "instruct_ablate_rand": {
+      "n": 50,
+      "mean_n_tokens": 46.72,
+      "distinct_2": 0.9793070552353469,
+      "rep4_rate": 0.0,
+      "degenerate_rate": 0.0
+    },
+    "base_baseline": {
+      "n": 50,
+      "mean_n_tokens": 39.26,
+      "distinct_2": 0.767772722341647,
+      "rep4_rate": 0.1843384285364293,
+      "degenerate_rate": 0.2
+    },
+    "base_inject136": {
+      "n": 50,
+      "mean_n_tokens": 39.26,
+      "distinct_2": 0.767772722341647,
+      "rep4_rate": 0.1843384285364293,
+      "degenerate_rate": 0.2
+    },
+    "instruct_subtract_alpha0.5": {
+      "n": 50,
+      "mean_n_tokens": 45.88,
+      "distinct_2": 0.9801265979829982,
+      "rep4_rate": 0.0,
+      "degenerate_rate": 0.0
+    },
+    "instruct_subtract_alpha1.0": {
+      "n": 50,
+      "mean_n_tokens": 44.78,
+      "distinct_2": 0.9806386166245211,
+      "rep4_rate": 0.0010256410256410256,
+      "degenerate_rate": 0.0
+    },
+    "instruct_subtract_alpha2.0": {
+      "n": 50,
+      "mean_n_tokens": 39.02,
+      "distinct_2": 0.9861117148695171,
+      "rep4_rate": 0.0012548262548262548,
+      "degenerate_rate": 0.0
+    },
+    "instruct_subtract_alpha4.0": {
+      "n": 50,
+      "mean_n_tokens": 33.7,
+      "distinct_2": 0.9629273287611823,
+      "rep4_rate": 0.007981144781144782,
+      "degenerate_rate": 0.0
+    },
+    "instruct_subtract_alpha8.0": {
+      "n": 50,
+      "mean_n_tokens": 25.76,
+      "distinct_2": 0.8881323802354264,
+      "rep4_rate": 0.029354911666737607,
+      "degenerate_rate": 0.0
+    },
+    "base_add_alpha0.5": {
+      "n": 50,
+      "mean_n_tokens": 41.08,
+      "distinct_2": 0.7201383102598818,
+      "rep4_rate": 0.2226078320680541,
+      "degenerate_rate": 0.28
+    },
+    "base_add_alpha1.0": {
+      "n": 50,
+      "mean_n_tokens": 40.5,
+      "distinct_2": 0.6010079174851399,
+      "rep4_rate": 0.3160593487612425,
+      "degenerate_rate": 0.32
+    },
+    "base_add_alpha2.0": {
+      "n": 50,
+      "mean_n_tokens": 47.76,
+      "distinct_2": 0.31004982699058187,
+      "rep4_rate": 0.6331222947207736,
+      "degenerate_rate": 0.74
+    },
+    "base_add_alpha4.0": {
+      "n": 50,
+      "mean_n_tokens": 56.16,
+      "distinct_2": 0.15144799305819498,
+      "rep4_rate": 0.8346016076117588,
+      "degenerate_rate": 1.0
+    },
+    "base_add_alpha8.0": {
+      "n": 50,
+      "mean_n_tokens": 60.96,
+      "distinct_2": 0.11513361129397996,
+      "rep4_rate": 0.8100236600395303,
+      "degenerate_rate": 1.0
+    }
+  }
+}

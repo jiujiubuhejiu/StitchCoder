@@ -1,0 +1,5 @@
+# Keep the small, frozen plotting inputs despite the parent data/ exclusion.
+!data/
+!data/**
+/rendered/
+__pycache__/
